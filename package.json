@@ -1,0 +1,48 @@
+{
+  "name": "tree-sitter-ghostlang",
+  "version": "0.1.0",
+  "description": "Tree-sitter grammar for Ghostlang v0.1.0 - Dual Lua/C-style scripting language",
+  "main": "bindings/node",
+  "keywords": [
+    "tree-sitter",
+    "ghostlang",
+    "gza",
+    "lua",
+    "grim",
+    "grove",
+    "editor",
+    "scripting",
+    "parsing"
+  ],
+  "author": "Ghostlang Contributors",
+  "license": "MIT",
+  "dependencies": {
+    "nan": "^2.14.0"
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.25.0"
+  },
+  "scripts": {
+    "build": "tree-sitter generate && node-gyp build",
+    "test": "tree-sitter test",
+    "parse": "tree-sitter parse"
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.ghostlang",
+      "file-types": ["gza", "ghost"],
+      "highlights": "queries/highlights.scm",
+      "locals": "queries/locals.scm",
+      "injections": "queries/injections.scm",
+      "textobjects": "queries/textobjects.scm"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ghostkellz/tree-sitter-ghostlang.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ghostkellz/tree-sitter-ghostlang/issues"
+  },
+  "homepage": "https://github.com/ghostkellz/tree-sitter-ghostlang#readme"
+}
