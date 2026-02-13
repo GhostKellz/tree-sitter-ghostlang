@@ -1744,6 +1744,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "nullish_coalescing_expression"
+        },
+        {
+          "type": "SYMBOL",
           "name": "logical_or_expression"
         },
         {
@@ -1780,11 +1784,23 @@
         },
         {
           "type": "SYMBOL",
+          "name": "optional_call_expression"
+        },
+        {
+          "type": "SYMBOL",
           "name": "member_expression"
         },
         {
           "type": "SYMBOL",
+          "name": "optional_chain_expression"
+        },
+        {
+          "type": "SYMBOL",
           "name": "subscript_expression"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "optional_subscript_expression"
         },
         {
           "type": "SYMBOL",
@@ -2299,6 +2315,126 @@
           {
             "type": "STRING",
             "value": "]"
+          }
+        ]
+      }
+    },
+    "optional_chain_expression": {
+      "type": "PREC_LEFT",
+      "value": 10,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "FIELD",
+            "name": "object",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_expression_base"
+            }
+          },
+          {
+            "type": "STRING",
+            "value": "?."
+          },
+          {
+            "type": "FIELD",
+            "name": "property",
+            "content": {
+              "type": "SYMBOL",
+              "name": "identifier"
+            }
+          }
+        ]
+      }
+    },
+    "optional_subscript_expression": {
+      "type": "PREC_LEFT",
+      "value": 10,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "FIELD",
+            "name": "object",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_expression_base"
+            }
+          },
+          {
+            "type": "STRING",
+            "value": "?["
+          },
+          {
+            "type": "FIELD",
+            "name": "index",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_expression_base"
+            }
+          },
+          {
+            "type": "STRING",
+            "value": "]"
+          }
+        ]
+      }
+    },
+    "optional_call_expression": {
+      "type": "PREC_LEFT",
+      "value": 10,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "FIELD",
+            "name": "function",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_expression_base"
+            }
+          },
+          {
+            "type": "STRING",
+            "value": "?."
+          },
+          {
+            "type": "FIELD",
+            "name": "arguments",
+            "content": {
+              "type": "SYMBOL",
+              "name": "argument_list"
+            }
+          }
+        ]
+      }
+    },
+    "nullish_coalescing_expression": {
+      "type": "PREC_LEFT",
+      "value": 2,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "FIELD",
+            "name": "left",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_expression_base"
+            }
+          },
+          {
+            "type": "STRING",
+            "value": "??"
+          },
+          {
+            "type": "FIELD",
+            "name": "right",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_expression_base"
+            }
           }
         ]
       }

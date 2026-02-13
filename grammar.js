@@ -412,6 +412,7 @@ module.exports = grammar({
     _expression_base: $ => choice(
       $.assignment_expression,
       $.conditional_expression,
+      $.nullish_coalescing_expression,
       $.logical_or_expression,
       $.logical_and_expression,
       $.equality_expression,
@@ -421,8 +422,11 @@ module.exports = grammar({
       $.multiplicative_expression,
       $.unary_expression,
       $.call_expression,
+      $.optional_call_expression,
       $.member_expression,
+      $.optional_chain_expression,
       $.subscript_expression,
+      $.optional_subscript_expression,
       $.object_literal,
       $.array_literal,
       $.identifier,
@@ -505,6 +509,35 @@ module.exports = grammar({
       '[',
       field('index', $._expression_base),
       ']'
+    )),
+
+    // Optional chaining: obj?.property
+    optional_chain_expression: $ => prec.left(10, seq(
+      field('object', $._expression_base),
+      '?.',
+      field('property', $.identifier)
+    )),
+
+    // Optional subscript: obj?[index]
+    optional_subscript_expression: $ => prec.left(10, seq(
+      field('object', $._expression_base),
+      '?[',
+      field('index', $._expression_base),
+      ']'
+    )),
+
+    // Optional call: func?.(args)
+    optional_call_expression: $ => prec.left(10, seq(
+      field('function', $._expression_base),
+      '?.',
+      field('arguments', $.argument_list)
+    )),
+
+    // Nullish coalescing: a ?? b
+    nullish_coalescing_expression: $ => prec.left(2, seq(
+      field('left', $._expression_base),
+      '??',
+      field('right', $._expression_base)
     )),
 
     argument_list: $ => seq(

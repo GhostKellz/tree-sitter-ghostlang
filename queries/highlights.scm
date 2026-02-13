@@ -49,6 +49,9 @@
   "?"
   ":"
   ".."
+  "??"
+  "?."
+  "?["
 ] @operator
 
 ; Assignment operators (shown as string in AST due to aliasing)
@@ -97,6 +100,14 @@
 ; Properties and methods
 (member_expression
   property: (identifier) @property)
+
+; Optional chain properties
+(optional_chain_expression
+  property: (identifier) @property)
+
+; Optional call functions
+(optional_call_expression
+  function: (identifier) @function.call)
 
 ; Object keys
 (object_member

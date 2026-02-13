@@ -70,6 +70,25 @@ vim.filetype.add({
 })
 ```
 
+For detailed setup including folding, text objects, and ftplugin, see [docs/NEOVIM.md](docs/NEOVIM.md).
+
+**Quick install script:**
+```bash
+./nvim/install.sh
+```
+
+### With Helix
+
+See [docs/HELIX.md](docs/HELIX.md) for Helix editor setup.
+
+### With Emacs
+
+See [docs/EMACS.md](docs/EMACS.md) for Emacs tree-sitter setup.
+
+### With VSCode
+
+A VSCode extension is available in [vscode-ghostlang/](vscode-ghostlang/).
+
 ### With Grove (Zig tree-sitter wrapper)
 
 ```zig
@@ -160,8 +179,21 @@ Syntax highlighting for:
 - Functions and methods
 - Variables and parameters
 - Literals (strings, numbers, booleans)
-- Operators and punctuation
+- Operators and punctuation (including `?.`, `??`, `?[`)
 - Comments
+
+### `queries/folds.scm`
+Code folding regions:
+- Function bodies
+- Control flow blocks (if, while, for, repeat)
+- Object and array literals
+- Multi-line comments
+
+### `queries/indents.scm`
+Automatic indentation:
+- Indent after `{`, `[`, `(`, `then`, `do`, `repeat`
+- Dedent before `}`, `]`, `)`, `end`, `until`, `else`
+- Aligned parameters and arguments
 
 ### `queries/locals.scm`
 Variable scoping and definitions:
